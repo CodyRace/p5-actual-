@@ -18,4 +18,4 @@ thread-random: thread-random.o timing.o
 
 
 clean:
-	/bin/rm -f *.o core a.out seq-random
+	/bin/rm -f *.o core a.out seq-random thread-random #thread-ids.c
