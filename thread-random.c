@@ -18,12 +18,14 @@
 //The main work routine
 void generateRandomNumbers(long long);  
 double getMilliSeconds();
+long long int threadcount;
+long long int randomcount;
 
 
 /* The main work routine */
 void generateRandomNumbers(long long int count)  
 {
-	long long int i;
+  int i;
 	long int x;
 
 	srandom(RANDOM_SEED);
@@ -33,24 +35,38 @@ void generateRandomNumbers(long long int count)
   	}
 }
 
+void *run(void *ptr)//call genearateRandNum~~ here
+{
+
+
+	pthread_exit(NULL);
+}
+
 //TODO replace count with the incementing thread ids gotten from argv[2]
 int main(int argc, char **argv) 
 {
-
-	long long int count;
-
-    double timeStart = 0;
+	int i, n;
+	int *value;
+    pthread_t *tid; 
+ 
+    double timeStart = 0;//TIMER
     double timeElapsed = 0;
 
-  	if (argc < 2) {
-        fprintf(stderr, "Usage: %s <n>\n" ,argv[0]);
-        exit(1);
-    }
-    sscanf(argv[1],"%lld",&count); /* lld for long long int */
+	if (argc != 3) {
+	 	fprintf(stderr, "Usage: thread-random <num-randoms> <num-threads>\n");
+		exit(EXIT_FAILURE);
+	}
+ //   sscanf(argv[1],"%lld",&count); /* lld for long long int */
+    threadcount = atoi(argv[2]);
+    for (i = 0; i < threadcount; i++){
+        generateRandomNumbers(randomcount);
+        printf("generated %lld random numbers\n", randomcount);
 
+    }
+    
     timeStart = getMilliSeconds();	//And we are off
-    generateRandomNumbers(count);
-	printf("generated %lld random numbers\n", count);
+//  generateRandomNumbers(count);
+//  printf("generated %lld random numbers\n", count);
 
     timeElapsed = getMilliSeconds() - timeStart;
     printf("Elapsed time:  %lf seconds\n",(double)(timeElapsed/1000.0));
