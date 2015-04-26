@@ -1,0 +1,54 @@
+
+
+*****************************************************************************************
+*Project: p5
+*Class: CS253:
+*Date: 2015/04/24 (I am now using the PROPER date format, year/month/day, which allows files to be sorted my date, which is impossible with month/day/year
+*Name: Cody Race
+*****************************************************************************************
+
+**Overview:
+thread-random.c:
+generates random numbers using threads
+seq-random.c:
+generates random numbers (base file, not for running)
+timing.c:
+prints the time it took for the program to complete
+**Included Files:
+
+README
+Makefile
+seq-random.c
+thread-random.c
+timing.c
+  
+**Building and Running:
+In Linux terminal:
+To run the test programs you will need to set the paths to find the library:
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib:../lib
+  then use the make command: make
+Then run the test programs as follows:
+  ./wftest.sh --std-list sample-input/sample1.txt 
+  
+To run the program as a standalone, use wf <List Type> <File Name>
+ List Type has several valid inputs, the simplest are "SOL" and "SDL" for self-organized list and standard list.
+
+**Program Design:
+wf.c Authored by Cody Race 
+WordObj.c Authored by Cody Race 
+
+List.c
+This implements the methods described in the included header file 'List.h'
+wf.c This takes in a file, parses it, and counts all of its word instances using a delimeter
+
+Removing from the list at a given node, now no longer prints usage messages.
+Searching the list to determine if a node exists in the list, now works properly. This method passed the debugger, but was not sufficient for project 4, because it did not work properly.
+Printing the list updated to print in the p4 format.
+
+**Program Development:
+Several segfault occurences, all syntax related, easily fixed.
+For several hours was unable to fix my code in wf.c because List.c was not working. List.c had passed the debugger, but apparently the search function was not properly tested. Turns out, wf.c was just fine, but now looks much different, due to extensive searchign online and discussion with peers. Originally structured to use fgets before checking the SDL/SOL argument
+No known issues or bugs.
+Valgrind reveals a variety of leaks, I have not fixed all of them. 
+
+
