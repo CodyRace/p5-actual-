@@ -3,7 +3,7 @@
 CC=gcc
 CFLAGS=-Wall -O
 #CFLAGS=-Wall -g
-LFLAGS=
+LFLAGS=-lpthread
 
 all: thread-random 
 
