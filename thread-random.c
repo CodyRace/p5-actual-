@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 	}
  //   sscanf(argv[1],"%lld",&count); /* lld for long long int */
     threadcount = atoi(argv[2]);
+    randomcount = atoi(argv[1]);
     for (i = 0; i < threadcount; i++){
         generateRandomNumbers(randomcount);
         printf("generated %lld random numbers\n", randomcount);
